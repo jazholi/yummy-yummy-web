@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yummy Yummy - Descubre Sabores, Reserva Experiencias</title>
+    <!-- Tailwind CSS CDN -->
+       <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandRed: '#8B0000',
+                        brandDarkRed: '#5B0000',
+                        brandGold: '#FFD700',
+                    },
+                    fontFamily: {
+                        title: ['"Playfair Display"', 'serif'],
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        .font-title { font-family: 'Playfair Display', serif; }
+    </style>
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Playfair Display (Títulos) + Poppins (Cuerpo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;0,900;1,700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-black text-white antialiased">
+
+    <!-- HEADER / ENCABEZADO (Negro, Blanco y Guinda) -->
+    <header class="bg-black text-white sticky top-0 z-40 shadow-xl border-b border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- LOGO Y SLOGAN -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <div class="w-12 h-12 rounded-full bg-brandRed flex items-center justify-center shadow-lg border border-white/20">
+                    <i class="fa-solid fa-utensils text-white text-xl"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-bold tracking-wider text-white">YUMMY <span class="text-brandRed">YUMMY</span></span>
+                    <p class="text-[10px] text-gray-400 tracking-tight hidden sm:block">DESCUBRE SABORES, RESERVA EXPERIENCIAS</p>
+                </div>
+            </div>
+
+            <!-- NAVEGACIÓN DESKTOP -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#inicio" class="hover:text-brandRed transition">INICIO</a>
+                <a href="#reservas" class="hover:text-brandRed transition">RESERVAS</a>
+                <a href="#locales" class="hover:text-brandRed transition">LOCALES</a>
+                <a href="#nosotros" class="hover:text-brandRed transition">NOSOTROS</a>
+            </nav>
+
+            <!-- ACCIONES SUPERIORES -->
+            <div class="flex items-center space-x-4">
+                <!-- Selector de Idioma -->
+                <div class="hidden lg:flex items-center space-x-1 text-xs bg-gray-900 px-3 py-1.5 rounded-full border border-gray-800">
+                    <span class="cursor-pointer font-bold text-white">ES</span>
+                    <span class="text-gray-600">|</span>
+                    <span class="cursor-pointer text-gray-400 hover:text-white">EN</span>
+                </div>
+
+                <!-- Botón de Usuario / Login -->
+                <button onclick="toggleModal('loginModal')" class="flex items-center space-x-2 bg-brandRed hover:bg-brandDarkRed text-white px-5 py-2.5 rounded-full text-sm font-semibold transition shadow-lg border border-brandRed/50">
+                    <i class="fa-solid fa-user"></i>
+                    <span class="hidden sm:inline">Mi Cuenta</span>
+                </button>
+
+                <!-- Menú Hamburguesa Móvil -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-white text-2xl focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú Móvil -->
+        <div id="mobileMenu" class="hidden md:hidden bg-black border-t border-gray-900 px-4 pt-2 pb-4 space-y-2">
+            <a href="#inicio" onclick="toggleMobileMenu()" class="block py-2 text-gray-200 hover:text-brandRed">INICIO</a>
+            <a href="#reservas" onclick="toggleMobileMenu()" class="block py-2 text-gray-200 hover:text-brandRed">RESERVAS</a>
+            <a href="#locales" onclick="toggleMobileMenu()" class="block py-2 text-gray-200 hover:text-brandRed">LOCALES</a>
+            <a href="#nosotros" onclick="toggleMobileMenu()" class="block py-2 text-gray-200 hover:text-brandRed">NOSOTROS</a>
+        </div>
+    </header>
+
+    <!-- HERO BANNER -->
+<section id="inicio" class="relative bg-black text-white py-20 lg:py-28 overflow-hidden">
+    <div class="absolute inset-0 opacity-40 bg-cover bg-center" style="background-image: url(https://i.pinimg.com/1200x/c6/fd/74/c6fd741fed2a75305fcc1907635dfdd4.jpg);"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl space-y-6">
+                <span class="bg-brandRed text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-red-500/30">Gastronomía Peruana e Internacional</span>
+                <h1 class="text-4xl sm:text-6xl font-black font-title tracking-tight leading-tight text-white">
+    Disfruta de un <span class="text-brandRed italic">Rico Pan con Chicharrón</span> y mucho más
+                </h1>
+                <p class="text-gray-300 text-lg">
+                    Encuentra los mejores restaurantes del Perú, explora cartas digitales en Soles y asegura tu mesa en segundos.
+                </p>
+
+                <!-- BUSCADOR INTERACTIVO -->
+                <div class="bg-white p-2.5 rounded-2xl shadow-2xl flex flex-col sm:flex-row gap-2">
+                    <div class="flex-1 flex items-center px-4 bg-gray-100 rounded-xl">
+                        <i class="fa-solid fa-location-dot text-brandRed mr-3"></i>
+                        <input id="searchInput" type="text" placeholder="¿A dónde quieres ir? (Ej. Miraflores, TGI Fridays...)" class="w-full bg-transparent py-3 text-gray-900 placeholder-gray-500 text-sm focus:outline-none">
+                    </div>
+                    <button onclick="realizarBusqueda()" class="bg-black hover:bg-brandRed text-white px-8 py-3 rounded-xl font-bold text-sm transition flex items-center justify-center space-x-2 border border-gray-800">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <span>Buscar</span>
+                    </button>
+                </div>
+                <div id="searchMessage" class="text-xs text-brandRed font-medium"></div>
+
+                <!-- CTAs -->
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <button onclick="abrirReservaModal('Restaurante General')" class="bg-brandRed hover:bg-brandDarkRed text-white font-bold px-8 py-3.5 rounded-xl shadow-lg transition border border-red-500/30">
+                        RESERVA AHORA
+                    </button>
+                    <a href="#locales" class="border border-gray-700 bg-black/50 hover:bg-white hover:text-black text-white font-bold px-8 py-3.5 rounded-xl transition">
+                        DESCUBRIR MENÚ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CATEGORÍAS -->
+    <section class="py-16 bg-white text-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-title text-gray-900">¿Qué se te antoja hoy?</h2>
+                <p class="text-gray-500 mt-2">Selecciona tu categoría favorita</p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+                <div onclick="filtrarCategoria('Hamburguesas')" class="bg-gray-50 p-6 rounded-2xl shadow-sm hover:shadow-md text-center cursor-pointer transition border border-gray-200 group">
+                    <div class="w-16 h-16 mx-auto bg-red-100 rounded-full flex items-center justify-center text-brandRed text-2xl mb-4 group-hover:bg-brandRed group-hover:text-white transition">
+                        <i class="fa-solid fa-burger"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800">Hamburguesas</h3>
+                </div>
+                <div onclick="filtrarCategoria('Asiática')" class="bg-gray-50 p-6 rounded-2xl shadow-sm hover:shadow-md text-center cursor-pointer transition border border-gray-200 group">
+                    <div class="w-16 h-16 mx-auto bg-red-100 rounded-full flex items-center justify-center text-brandRed text-2xl mb-4 group-hover:bg-brandRed group-hover:text-white transition">
+                        <i class="fa-solid fa-fish"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800">Makis / Asiática</h3>
+                </div>
+                <div onclick="filtrarCategoria('Bebidas')" class="bg-gray-50 p-6 rounded-2xl shadow-sm hover:shadow-md text-center cursor-pointer transition border border-gray-200 group">
+                    <div class="w-16 h-16 mx-auto bg-red-100 rounded-full flex items-center justify-center text-brandRed text-2xl mb-4 group-hover:bg-brandRed group-hover:text-white transition">
+                        <i class="fa-solid fa-martini-glass-citrus"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800">Bebidas y Cocteles</h3>
+                </div>
+                <div onclick="filtrarCategoria('Postres')" class="bg-gray-50 p-6 rounded-2xl shadow-sm hover:shadow-md text-center cursor-pointer transition border border-gray-200 group">
+                    <div class="w-16 h-16 mx-auto bg-red-100 rounded-full flex items-center justify-center text-brandRed text-2xl mb-4 group-hover:bg-brandRed group-hover:text-white transition">
+                        <i class="fa-solid fa-ice-cream"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800">Postres</h3>
+                </div>
+                <div onclick="filtrarCategoria('Todos')" class="bg-gray-50 p-6 rounded-2xl shadow-sm hover:shadow-md text-center cursor-pointer transition border border-gray-200 group col-span-2 sm:col-span-1">
+                    <div class="w-16 h-16 mx-auto bg-gray-200 rounded-full flex items-center justify-center text-gray-800 text-2xl mb-4 group-hover:bg-black group-hover:text-white transition">
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800">Mostrar más...</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESTAURANTES DESTACADOS -->
+    <section id="reservas" class="py-16 bg-black border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <span class="text-brandRed font-bold text-sm tracking-widest uppercase">Selección Exclusiva</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold font-title text-white mt-1">Restaurantes que te podrían gustar</h2>
+                </div>
+                <span class="text-sm font-semibold text-gray-400 hidden sm:block">Perú | Lima y Provincias</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 flex flex-col justify-between shadow-xl">
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&q=80&w=800" alt="TGI Fridays" class="w-full h-full object-cover">
+                            <span class="absolute top-4 right-4 bg-brandRed text-white font-bold px-3 py-1 rounded-full text-xs shadow">
+                                <i class="fa-solid fa-star text-brandGold"></i> 5.0
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-semibold text-brandRed uppercase">Wraps y Tacos | Larcomar</span>
+                            <h3 class="text-xl font-bold text-white mt-1">TGI Fridays</h3>
+                            <p class="text-sm text-gray-400 mt-2"><i class="fa-solid fa-location-dot text-brandRed mr-1"></i> Miraflores, Lima</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0">
+                        <button onclick="abrirReservaModal('TGI Fridays - Miraflores')" class="w-full bg-brandRed hover:bg-brandDarkRed text-white font-bold py-3 rounded-xl transition shadow flex items-center justify-center space-x-2 border border-red-500/30">
+                            <span>Reserva aquí</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 flex flex-col justify-between shadow-xl">
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&q=80&w=800" alt="Pimentel" class="w-full h-full object-cover">
+                            <span class="absolute top-4 right-4 bg-brandRed text-white font-bold px-3 py-1 rounded-full text-xs shadow">
+                                <i class="fa-solid fa-star text-brandGold"></i> 4.5
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-semibold text-brandRed uppercase">Ceviche | Calle Narciso de la Colina</span>
+                            <h3 class="text-xl font-bold text-white mt-1">Pimentel</h3>
+                            <p class="text-sm text-gray-400 mt-2"><i class="fa-solid fa-location-dot text-brandRed mr-1"></i> Surquillo, Lima</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0">
+                        <button onclick="abrirReservaModal('Pimentel - Surquillo')" class="w-full bg-brandRed hover:bg-brandDarkRed text-white font-bold py-3 rounded-xl transition shadow flex items-center justify-center space-x-2 border border-red-500/30">
+                            <span>Reserva aquí</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 flex flex-col justify-between shadow-xl">
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=800" alt="El Hornero" class="w-full h-full object-cover">
+                            <span class="absolute top-4 right-4 bg-brandRed text-white font-bold px-3 py-1 rounded-full text-xs shadow">
+                                <i class="fa-solid fa-star text-brandGold"></i> 5.0
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-semibold text-brandRed uppercase">Carnes y Parrillas | Av. República</span>
+                            <h3 class="text-xl font-bold text-white mt-1">El Hornero</h3>
+                            <p class="text-sm text-gray-400 mt-2"><i class="fa-solid fa-location-dot text-brandRed mr-1"></i> Barranco, Lima</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0">
+                        <button onclick="abrirReservaModal('El Hornero - Barranco')" class="w-full bg-brandRed hover:bg-brandDarkRed text-white font-bold py-3 rounded-xl transition shadow flex items-center justify-center space-x-2 border border-red-500/30">
+                            <span>Reserva aquí</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIRECTORIO DE LOCALES -->
+    <section id="locales" class="py-16 bg-white text-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-brandRed font-bold text-sm tracking-widest uppercase">Explora por Distritos</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-title text-gray-900 mt-1">Locales y Restaurantes en Lima</h2>
+                <p class="text-gray-500 mt-2">Encuentra los mejores puntos gastronómicos cerca de ti</p>
+            </div>
+
+            <!-- Botones de Filtro por Distrito -->
+            <div class="flex flex-wrap justify-center gap-3 mb-10">
+                <button onclick="filtrarDistrito('Todos')" class="bg-black text-white px-5 py-2.5 rounded-xl font-semibold text-sm shadow hover:bg-brandRed transition">Todos</button>
+                <button onclick="filtrarDistrito('Miraflores')" class="bg-gray-100 hover:bg-gray-200 border border-gray-200 text-gray-800 px-5 py-2.5 rounded-xl font-semibold text-sm transition">Miraflores</button>
+                <button onclick="filtrarDistrito('San Isidro')" class="bg-gray-100 hover:bg-gray-200 border border-gray-200 text-gray-800 px-5 py-2.5 rounded-xl font-semibold text-sm transition">San Isidro</button>
+                <button onclick="filtrarDistrito('Barranco')" class="bg-gray-100 hover:bg-gray-200 border border-gray-200 text-gray-800 px-5 py-2.5 rounded-xl font-semibold text-sm transition">Barranco</button>
+                <button onclick="filtrarDistrito('Lince')" class="bg-gray-100 hover:bg-gray-200 border border-gray-200 text-gray-800 px-5 py-2.5 rounded-xl font-semibold text-sm transition">Lince</button>
+                <button onclick="filtrarDistrito('Surco')" class="bg-gray-100 hover:bg-gray-200 border border-gray-200 text-gray-800 px-5 py-2.5 rounded-xl font-semibold text-sm transition">Santiago de Surco</button>
+            </div>
+
+            <!-- Grilla Dinámica de Locales de Lima con Imágenes Reales -->
+            <div id="listaLocales" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                
+                <!-- Local 1 -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-44 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=600" alt="Siete Sopas" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <span class="absolute top-3 right-3 bg-black/80 text-white font-bold px-2.5 py-1 rounded-full text-[11px]">Sopas y Criollo</span>
+                        </div>
+                        <div class="p-5">
+                            <h4 class="font-bold text-lg text-gray-900">Siete Sopas</h4>
+                            <p class="text-xs text-gray-500 mt-1"><i class="fa-solid fa-location-dot text-brandRed mr-1"></i> Av. Arequipa 2394, Lince</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <button onclick="abrirReservaModal('Siete Sopas - Lince')" class="w-full bg-black hover:bg-brandRed text-white text-xs font-bold py-2.5 rounded-xl transition">Reservar Local</button>
+                    </div>
+                </div>
+
+                <!-- Local 2 -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-44 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=80&w=600" alt="Primos Chicken Bar" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <span class="absolute top-3 right-3 bg-black/80 text-white font-bold px-2.5 py-1 rounded-full text-[11px]">Pollo a la Brasa</span>
+                        </div>
+                        <div class="p-5">
+                            <h4 class="font-bold text-lg text-gray-900">Primos Chicken Bar</h4>
+                            <p class="text-xs text-gray-500 mt-1"><i class="fa-solid fa-location-dot text-brandRed mr-1"></i> Av. Armendáriz 546, Miraflores</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <button onclick="abrirReservaModal('Primos Chicken Bar - Miraflores')" class="w-full bg-black hover:bg-brandRed text-white text-xs font-bold py-2.5 rounded-xl transition">Reservar Local</button>
+                    </div>
+                </div>
+
+                <!-- Local 3 -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-44 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&q=80&w=600" alt="Big Boy Burgers" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <span class="absolute top-3 right-3 bg-black/80 text-white font-bold px-2.5 py-1 rounded-full text-[11px]">Hamburguesas Smash</span>
+                        </div>
+                        <div class="p-5">
+                            <h4 class="font-bold text-lg text-gray-900">Big Boy Burgers</h4>
+                            <p class="text-xs text-gray-500 mt-1"><i class="fa-solid fa-location-dot text-brandRed mr-1"></i> Calle Conquistadores 305, San Isidro</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <button onclick="abrirReservaModal('Big Boy Burgers - San Isidro')" class="w-full bg-black hover:bg-brandRed text-white text-xs font-bold py-2.5 rounded-xl transition">Reservar Local</button>
+                    </div>
+                </div>
+
+                <!-- Local 4 -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-44 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1579684947550-22e945225d9a?auto=format&fit=crop&q=80&w=600" alt="Madam Tusan" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <span class="absolute top-3 right-3 bg-black/80 text-white font-bold px-2.5 py-1 rounded-full text-[11px]">Chifa / Asiático</span>
+                        </div>
+                        <div class="p-5">
+                            <h4 class="font-bold text-lg text-gray-900">Madam Tusan</h4>
+                            <p class="text-xs text-gray-500 mt-1"><i class="fa-solid fa-location-dot text-brandRed mr-1"></i> CC. Real Plaza Salaverry, Jesús María</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <button onclick="abrirReservaModal('Madam Tusan - Jesús María')" class="w-full bg-black hover:bg-brandRed text-white text-xs font-bold py-2.5 rounded-xl transition">Reservar Local</button>
+                    </div>
+                </div>
+
+                <!-- Local 5 -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-44 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=600" alt="Pizzería La Romana" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <span class="absolute top-3 right-3 bg-black/80 text-white font-bold px-2.5 py-1 rounded-full text-[11px]">Pizzas y Pastas</span>
+                        </div>
+                        <div class="p-5">
+                            <h4 class="font-bold text-lg text-gray-900">La Romana</h4>
+                            <p class="text-xs text-gray-500 mt-1"><i class="fa-solid fa-location-dot text-brandRed mr-1"></i> Av. Prescott 395, San Isidro</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <button onclick="abrirReservaModal('La Romana - San Isidro')" class="w-full bg-black hover:bg-brandRed text-white text-xs font-bold py-2.5 rounded-xl transition">Reservar Local</button>
+                    </div>
+                </div>
+
+                <!-- Local 6 -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-44 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&q=80&w=600" alt="Señor Limón" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <span class="absolute top-3 right-3 bg-black/80 text-white font-bold px-2.5 py-1 rounded-full text-[11px]">Cevichería / Marina</span>
+                        </div>
+                        <div class="p-5">
+                            <h4 class="font-bold text-lg text-gray-900">Señor Limón</h4>
+                            <p class="text-xs text-gray-500 mt-1"><i class="fa-solid fa-location-dot text-brandRed mr-1"></i> Av. Caminos del Inca 257, Surco</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <button onclick="abrirReservaModal('Señor Limón - Surco')" class="w-full bg-black hover:bg-brandRed text-white text-xs font-bold py-2.5 rounded-xl transition">Reservar Local</button>
+                    </div>
+                </div>
+
+                <!-- Local 7 -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-44 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=80&w=600" alt="Isolina Taberna" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <span class="absolute top-3 right-3 bg-black/80 text-white font-bold px-2.5 py-1 rounded-full text-[11px]">Taberna Criolla</span>
+                        </div>
+                        <div class="p-5">
+                            <h4 class="font-bold text-lg text-gray-900">Isolina Taberna</h4>
+                            <p class="text-xs text-gray-500 mt-1"><i class="fa-solid fa-location-dot text-brandRed mr-1"></i> Av. San Martín 101, Barranco</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <button onclick="abrirReservaModal('Isolina Taberna - Barranco')" class="w-full bg-black hover:bg-brandRed text-white text-xs font-bold py-2.5 rounded-xl transition">Reservar Local</button>
+                    </div>
+                </div>
+
+                <!-- Local 8 -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-44 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=600" alt="Baco y Vaca" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <span class="absolute top-3 right-3 bg-black/80 text-white font-bold px-2.5 py-1 rounded-full text-[11px]">Parrillas & CORTES</span>
+                        </div>
+                        <div class="p-5">
+                            <h4 class="font-bold text-lg text-gray-900">Baco y Vaca</h4>
+                            <p class="text-xs text-gray-500 mt-1"><i class="fa-solid fa-location-dot text-brandRed mr-1"></i> Av. Alfredo Benavides 1866, Miraflores</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <button onclick="abrirReservaModal('Baco y Vaca - Miraflores')" class="w-full bg-black hover:bg-brandRed text-white text-xs font-bold py-2.5 rounded-xl transition">Reservar Local</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN ÚNICA DE COMENTARIOS Y RESEÑAS -->
+    <section class="py-16 bg-black text-white border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+                <div>
+                    <span class="text-brandRed font-bold text-sm tracking-widest uppercase">Opiniones Reales</span>
+                    <h2 class="text-3xl font-extrabold mt-1">Nuestros Clientes Nos Eligen</h2>
+                </div>
+                <button onclick="toggleModal('feedbackModal')" class="mt-4 md:mt-0 bg-brandRed hover:bg-brandDarkRed text-white font-bold px-6 py-3 rounded-xl transition shadow border border-red-500/30">
+                    Cuéntanos tu experiencia
+                </button>
+            </div>
+
+            <!-- CONTENEDOR ÚNICO DE COMENTARIOS -->
+            <div id="listaComentarios" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-gray-900 p-6 rounded-2xl border border-gray-800">
+                    <div class="text-brandGold text-sm mb-2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-gray-300 text-sm mb-4">"Reservar en TGI Fridays fue rapidísimo y la comida llegó perfecta."</p>
+                    <span class="text-xs font-bold text-brandRed">Mariano Vargas</span>
+                </div>
+                <div class="bg-gray-900 p-6 rounded-2xl border border-gray-800">
+                    <div class="text-brandGold text-sm mb-2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-gray-300 text-sm mb-4">"Excelente plataforma para encontrar cevicherías top en Surquillo."</p>
+                    <span class="text-xs font-bold text-brandRed">Oryzt12450</span>
+                </div>
+                <div class="bg-gray-900 p-6 rounded-2xl border border-gray-800">
+                    <div class="text-brandGold text-sm mb-2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-gray-300 text-sm mb-4">"El pan con chicharrón recomendado en el banner principal es delicioso."</p>
+                    <span class="text-xs font-bold text-brandRed">MiriamYvazco</span>
+                </div>
+                <div class="bg-gray-900 p-6 rounded-2xl border border-gray-800">
+                    <div class="text-brandGold text-sm mb-2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-gray-300 text-sm mb-4">"Muy buena app, fácil de usar y el código QR de reserva llegó de inmediato."</p>
+                    <span class="text-xs font-bold text-brandRed">ChristianHy</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="nosotros" class="bg-black text-gray-400 py-12 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-6">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-brandRed flex items-center justify-center">
+                    <i class="fa-solid fa-utensils text-white"></i>
+                </div>
+                <span class="text-lg font-bold text-white">YUMMY <span class="text-brandRed">YUMMY</span> (PERÚ)</span>
+            </div>
+            <p class="text-xs">© 2026 Yummy Yummy S.A.C. Todos los derechos reservados. Descubre sabores, reserva experiencias.</p>
+            <div class="flex space-x-4 text-xl">
+                <a href="#" class="hover:text-brandRed"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="hover:text-brandRed"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-brandRed"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL DE LOGIN (Blanco y Guinda) -->
+    <div id="loginModal" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
+        <div class="bg-white text-gray-900 w-full max-w-md rounded-3xl p-8 relative shadow-2xl">
+            <button onclick="toggleModal('loginModal')" class="absolute top-6 right-6 text-gray-400 hover:text-black text-xl"><i class="fa-solid fa-xmark"></i></button>
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-brandRed rounded-full flex items-center justify-center mx-auto text-white text-xl mb-2"><i class="fa-solid fa-user"></i></div>
+                <h3 class="text-2xl font-bold text-gray-900">Mi Cuenta Yummy</h3>
+                <p class="text-xs text-gray-500">Inicia sesión para gestionar tus reservas</p>
+            </div>
+            <form onsubmit="handleLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Número Telefónico</label>
+                    <input type="tel" required placeholder="+51 999 999 999" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-brandRed">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Correo / Gmail</label>
+                    <input type="email" required placeholder="tucorreo@gmail.com" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-brandRed">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Contraseña</label>
+                    <input type="password" required placeholder="••••••••" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-brandRed">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Lugar: ¿A dónde quieres ir?</label>
+                    <input type="text" id="loginPlace" placeholder="Ej. Miraflores, San Isidro..." class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-brandRed">
+                    <span id="loginError" class="text-xs text-brandRed font-medium hidden mt-1">Lugar no encontrado</span>
+                </div>
+                <button type="submit" class="w-full bg-brandRed hover:bg-brandDarkRed text-white font-bold py-3.5 rounded-xl transition shadow">Ingresar / Log In</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL DE RESERVAS Y CARTA VIRTUAL -->
+    <div id="reservaModal" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
+        <div class="bg-white text-gray-900 w-full max-w-2xl rounded-3xl p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="toggleModal('reservaModal')" class="absolute top-6 right-6 text-gray-400 hover:text-black text-xl"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="mb-6">
+                <span class="text-xs font-bold text-brandRed uppercase">Módulo de Reservas</span>
+                <h3 id="reservaLocalTitle" class="text-2xl font-bold text-gray-900">Reservar Mesa</h3>
+            </div>
+
+            <!-- PASO 1 -->
+            <div id="reservaStep1" class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Fecha</label>
+                        <input type="date" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Hora</label>
+                        <input type="time" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Número de Personas</label>
+                    <input type="number" min="1" value="2" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm">
+                </div>
+                <button onclick="irACarta()" class="w-full bg-brandRed hover:bg-brandDarkRed text-white font-bold py-3.5 rounded-xl transition shadow">Continuar a Carta Virtual</button>
+            </div>
+
+            <!-- PASO 2 -->
+            <div id="reservaStep2" class="hidden space-y-4">
+                <h4 class="font-bold text-gray-800">Carta Virtual (Precios en S/.)</h4>
+                <div class="space-y-2 max-h-48 overflow-y-auto pr-2 border rounded-xl p-3 bg-gray-50">
+                    <div class="flex justify-between items-center py-2 border-b">
+                        <div><p class="font-semibold text-sm">Hamburguesa Clásica</p><span class="text-xs text-gray-500">S/. 16.90</span></div>
+                        <button onclick="agregarItem('Hamburguesa Clásica', 16.90)" class="bg-black text-white px-3 py-1 rounded-lg text-xs font-bold hover:bg-brandRed transition">Agregar</button>
+                    </div>
+                    <div class="flex justify-between items-center py-2 border-b">
+                        <div><p class="font-semibold text-sm">Hamburguesa Especial</p><span class="text-xs text-gray-500">S/. 19.90</span></div>
+                        <button onclick="agregarItem('Hamburguesa Especial', 19.90)" class="bg-black text-white px-3 py-1 rounded-lg text-xs font-bold hover:bg-brandRed transition">Agregar</button>
+                    </div>
+                    <div class="flex justify-between items-center py-2">
+                        <div><p class="font-semibold text-sm">Inca Kola 1.5L / Chicha</p><span class="text-xs text-gray-500">S/. 8.50</span></div>
+                        <button onclick="agregarItem('Bebida 1.5L', 8.50)" class="bg-black text-white px-3 py-1 rounded-lg text-xs font-bold hover:bg-brandRed transition">Agregar</button>
+                    </div>
+                </div>
+
+                <div class="bg-gray-100 p-4 rounded-xl flex justify-between items-center font-bold">
+                    <span>Total Pedido Anticipado:</span>
+                    <span id="totalPedido" class="text-brandRed text-lg">S/. 0.00</span>
+                </div>
+
+                <button onclick="finalizarReserva()" class="w-full bg-brandRed hover:bg-brandDarkRed text-white font-bold py-3.5 rounded-xl transition shadow">Confirmar y Generar Código QR</button>
+            </div>
+
+            <!-- PASO 3 -->
+            <div id="reservaStep3" class="hidden text-center space-y-4 py-4">
+                <div class="w-16 h-16 bg-red-100 text-brandRed rounded-full flex items-center justify-center mx-auto text-3xl"><i class="fa-solid fa-check"></i></div>
+                <h4 class="text-2xl font-bold text-gray-900">¡Reserva Exitosa!</h4>
+                <p class="text-sm text-gray-600">Tu código QR ha sido generado correctamente.</p>
+                <div class="bg-gray-100 p-6 rounded-2xl inline-block border">
+                    <i class="fa-solid fa-qrcode text-6xl text-gray-800"></i>
+                    <p class="text-xs font-bold mt-2 text-brandRed">Código: YUMMY-2026-PE</p>
+                </div>
+                <button onclick="toggleModal('reservaModal')" class="w-full bg-black text-white font-bold py-3 rounded-xl">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE FEEDBACK / RESEÑAS -->
+    <div id="feedbackModal" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
+        <div class="bg-white text-gray-900 w-full max-w-md rounded-3xl p-8 relative shadow-2xl">
+            <button onclick="toggleModal('feedbackModal')" class="absolute top-6 right-6 text-gray-400 hover:text-black text-xl"><i class="fa-solid fa-xmark"></i></button>
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-900">Cuéntanos tu experiencia</h3>
+                <p class="text-xs text-gray-500">Tu opinión nos ayuda a mejorar</p>
+            </div>
+            
+            <form onsubmit="handleFeedback(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Tu Nombre o Usuario</label>
+                    <input type="text" id="feedbackNombre" required placeholder="Ej. Carlos Mendoza" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-brandRed">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Calificación (Estrellas)</label>
+                    <select id="feedbackEstrellas" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-brandRed">
+                        <option value="5">★★★★★ (5 Estrellas)</option>
+                        <option value="4">★★★★☆ (4 Estrellas)</option>
+                        <option value="3">★★★☆☆ (3 Estrellas)</option>
+                        <option value="2">★★☆☆☆ (2 Estrellas)</option>
+                        <option value="1">★☆☆☆☆ (1 Estrella)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Tu Comentario</label>
+                    <textarea id="feedbackComentario" required rows="4" placeholder="Escribe tu reseña aquí..." class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-brandRed"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-brandRed hover:bg-brandDarkRed text-white font-bold py-3.5 rounded-xl transition shadow">Enviar Reseña</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT CORREGIDO Y LIMPIO -->
+    <script>
+        function toggleModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) modal.classList.toggle('hidden');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            if (menu) menu.classList.toggle('hidden');
+        }
+
+        function realizarBusqueda() {
+            const queryInput = document.getElementById('searchInput');
+            const msg = document.getElementById('searchMessage');
+            if (!queryInput) return;
+
+            const query = queryInput.value.trim().toLowerCase();
+            const validos = ['miraflores', 'surquillo', 'barranco', 'san borja', 'san isidro', 'tgi fridays', 'pimentel', 'el hornero'];
+            
+            if (validos.some(v => query.includes(v))) {
+                msg.textContent = "¡Local encontrado con éxito! Desplazándose a reservas...";
+                msg.style.color = "#8B0000";
+                setTimeout(() => {
+                    document.getElementById('reservas').scrollIntoView({ behavior: 'smooth' });
+                }, 1000);
+            } else {
+                msg.textContent = "Lugar no encontrado. Prueba con 'Miraflores', 'Surquillo' o 'TGI Fridays'.";
+                msg.style.color = "#EF4444";
+            }
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const place = document.getElementById('loginPlace').value.trim().toLowerCase();
+            const errorSpan = document.getElementById('loginError');
+            const validos = ['miraflores', 'surquillo', 'barranco', 'san borja', 'san isidro', 'lima', 'arequipa', ''];
+
+            if (place && !validos.some(v => place.includes(v))) {
+                errorSpan.classList.remove('hidden');
+            } else {
+                errorSpan.classList.add('hidden');
+                alert("¡Inicio de sesión exitoso! Bienvenido a Yummy Yummy.");
+                toggleModal('loginModal');
+            }
+        }
+
+        function abrirReservaModal(localName) {
+            const title = document.getElementById('reservaLocalTitle');
+            if (title) title.textContent = "Reservar en: " + localName;
+            
+            document.getElementById('reservaStep1').classList.remove('hidden');
+            document.getElementById('reservaStep2').classList.add('hidden');
+            document.getElementById('reservaStep3').classList.add('hidden');
+            toggleModal('reservaModal');
+        }
+
+        function irACarta() {
+            document.getElementById('reservaStep1').classList.add('hidden');
+            document.getElementById('reservaStep2').classList.remove('hidden');
+        }
+
+        let totalSoles = 0;
+        function agregarItem(nombre, precio) {
+            totalSoles += precio;
+            document.getElementById('totalPedido').textContent = 'S/. ' + totalSoles.toFixed(2);
+        }
+
+        function finalizarReserva() {
+            document.getElementById('reservaStep2').classList.add('hidden');
+            document.getElementById('reservaStep3').classList.remove('hidden');
+            totalSoles = 0;
+            document.getElementById('totalPedido').textContent = 'S/. 0.00';
+        }
+
+        function filtrarCategoria(cat) {
+            alert("Filtrando categoría: " + cat);
+        }
+
+        function filtrarDistrito(dist) {
+            alert("Mostrando locales en: " + dist);
+        }
+
+        function handleFeedback(e) {
+            e.preventDefault();
+
+            const nombre = document.getElementById('feedbackNombre').value.trim();
+            const estrellas = parseInt(document.getElementById('feedbackEstrellas').value);
+            const textoComentario = document.getElementById('feedbackComentario').value.trim();
+
+            let estrellasHTML = '';
+            for (let i = 0; i < 5; i++) {
+                if (i < estrellas) {
+                    estrellasHTML += '<i class="fa-solid fa-star"></i>';
+                } else {
+                    estrellasHTML += '<i class="fa-regular fa-star text-gray-600"></i>';
+                }
+            }
+
+            const nuevaCard = document.createElement('div');
+            nuevaCard.className = 'bg-gray-900 p-6 rounded-2xl border border-gray-800';
+            nuevaCard.innerHTML = `
+                <div class="text-brandGold text-sm mb-2">${estrellasHTML}</div>
+                <p class="text-gray-300 text-sm mb-4">"${textoComentario}"</p>
+                <span class="text-xs font-bold text-brandRed">${nombre}</span>
+            `;
+
+            const contenedor = document.getElementById('listaComentarios');
+            if (contenedor) {
+                contenedor.insertBefore(nuevaCard, contenedor.firstChild);
+            }
+
+            document.getElementById('feedbackNombre').value = '';
+            document.getElementById('feedbackComentario').value = '';
+            toggleModal('feedbackModal');
+
+            alert("¡Gracias por tu reseña! Tu comentario se agregó correctamente.");
+        }
+    </script>
+</body>
+</html>
