@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jazholi.github.io/yummy-yummy-web/sitemap.xml
